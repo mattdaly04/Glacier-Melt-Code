@@ -1,0 +1,24 @@
+# CNN 3x3 hyperparameters
+# Validation overlap: 79.85%, train overlap: 84.54%, gap: 4.69%
+# AUC (validation): 0.9451
+# Not selected for deployment due to slightly larger train/val gap vs MLP.
+
+model: cnn3x3
+
+architecture:
+  patch_size: 3
+  embedding_dim: 64
+  conv_channels: [128, 256]   # two convolutional layers
+  fc_hidden: 128
+  dropout_rate: 0.5
+
+training:
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_size: 512
+  epochs: 50                  # fill in actual value used
+
+data:
+  sampling_strategy: 2
+  validation_region: r3
+  features: ae_embeddings

@@ -1,0 +1,24 @@
+# MLP final hyperparameters
+# Deployed model — selected based on validation overlap performance.
+# Validation overlap: 79.52%, train overlap: 81.10%, gap: 1.58%
+# AUC (validation): 0.9454
+
+model: mlp
+
+architecture:
+  input_dim: 64             # AlphaEarth embedding dimensionality
+  hidden_sizes: [512, 256, 128]
+  dropout_rate: 0.5
+
+training:
+  lr: 0.001                 # Adam learning rate
+  weight_decay: 0.0001      # Adam L2 regularisation (alpha)
+  batch_size: 512
+  epochs: 50                # fill in actual value used
+
+data:
+  sampling_strategy: 2      # geographic hold-out (R3 withheld)
+  validation_region: r3
+  n_train_pixels: 12200000  # approximate
+  n_val_pixels: 1800000     # approximate (R3 region)
+  features: ae_embeddings   # raw 64-dim AlphaEarth vectors, no EASD

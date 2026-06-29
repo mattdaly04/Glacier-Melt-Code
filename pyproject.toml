@@ -1,7 +1,7 @@
 [project]
-name = "glacier"
+name = "glacier-melt"
 version = "0.1.0"
-description = "Add your description here"
+description = "Tracking and predicting glacial melt in the Peruvian Andes using machine learning."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
@@ -19,3 +19,10 @@ dependencies = [
     "seaborn>=0.13.2",
     "torch>=2.12.0",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/glacier_melt"]

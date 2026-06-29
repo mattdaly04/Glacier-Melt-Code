@@ -1,0 +1,17 @@
+# Random Forest baseline hyperparameters
+# EASD features only (elevation, aspect, slope, edge_distance)
+# Validation overlap: 70.29%, AUC: 0.8987
+
+model: rf
+
+architecture:
+  n_estimators: 300         # exceeds ~128-tree convergence (Oshiro et al. 2012)
+  max_features: sqrt
+  oob_score: true
+  n_jobs: -1
+
+data:
+  sampling_strategy: 2      # geographic hold-out (R3 withheld)
+  validation_region: r3
+  max_samples: 2000000      # CPU memory constraint on full-embedding RF
+  features: easd            # elevation, aspect, slope, edge_distance
