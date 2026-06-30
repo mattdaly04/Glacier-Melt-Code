@@ -417,7 +417,7 @@ def plot_vulnerability_characteristics(
     low = df_vuln[df_vuln["mean_mlp_score"] <= q25]
 
     features = ["mean_elevation", "mean_slope", "mean_aspect",
-                "mean_edge_distance", "area_km2"]
+                "mean_edge_dist", "area_km2"]
     labels = ["Mean elevation (m)", "Mean slope (°)", "Mean aspect (°)",
               "Mean edge distance (m)", "Area (km²)"]
     units = ["m", "°", "°", "m", "km²"]
@@ -428,7 +428,7 @@ def plot_vulnerability_characteristics(
                     df_vuln["mean_elevation"].max(), 25),
         np.linspace(0, df_vuln["mean_slope"].max(), 25),
         np.linspace(0, 360, 25),
-        np.linspace(0, df_vuln["mean_edge_distance"].quantile(0.99), 25),
+        np.linspace(0, df_vuln["mean_edge_dist"].quantile(0.99), 25),
         np.linspace(0, df_vuln["area_km2"].quantile(0.95), 25),
     ]
 

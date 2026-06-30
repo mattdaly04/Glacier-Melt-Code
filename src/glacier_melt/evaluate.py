@@ -344,43 +344,33 @@ def per_glacier_metrics(
 def glacier_physical_features(
     df: pd.DataFrame,
     rgi_col: str = "rgi_id",
-    feature_cols: list[str] | None = None,
 ) -> pd.DataFrame:
     """
-    Compute mean physical features per glacier from pixel-level data.
+    Compute mean physical (EASD) features per glacier from pixel-level data.
+
+    Must be called on a dataframe that includes elevation, slope, aspect,
+    and edge_distance columns (e.g. the Training_Data_2017 parquets, not
+    the predictions parquet, which only retains edge_distance).
 
     Parameters
     ----------
     df : pd.DataFrame
-        Pixel dataframe with EASD columns and RGI IDs.
+        Pixel dataframe with EASD columns and RGI IDs assigned.
     rgi_col : str
         Column identifying glacier membership.
-    feature_cols : list of str or None
-        Columns to aggregate. Defaults to EASD columns plus ``mlp_score``
-        if present.
 
     Returns
     -------
     pd.DataFrame
-        One row per glacier with mean feature values and pixel count.
-        Columns: ``rgi_id``, ``n_pixels``, ``area_km2``,
-        ``mean_elevation``, ``mean_slope``, ``mean_aspect``,
-        ``mean_edge_distance``, and ``mean_mlp_score`` (if available).
+        One row per glacier: rgi_id, mean_elevation, mean_slope,
+        mean_aspect, mean_edge_dist.
     """
-    if feature_cols is None:
-        feature_cols = ["elevation", "slope", "aspect", "edge_distance"]
-        if "mlp_score" in df.columns:
-            feature_cols.append("mlp_score")
-
-    agg = {col: (col, "mean") for col in feature_cols}
-    agg["n_pixels"] = ("lon", "count")
-
-    result = df.groupby(rgi_col).agg(**agg).reset_index()
-    result.columns = (
-        [rgi_col, "n_pixels"]
-        + [f"mean_{c}" for c in feature_cols]
-    )
-    result["area_km2"] = result["n_pixels"] * PIXEL_AREA_KM2
+    result = df.groupby(rgi_col).agg(
+        mean_elevation=("elevation", "mean"),
+        mean_slope=("slope", "mean"),
+        mean_aspect=("aspect", "mean"),
+        mean_edge_dist=("edge_distance", "mean"),
+    ).reset_index()
     return result
 
 
