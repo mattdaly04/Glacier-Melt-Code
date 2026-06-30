@@ -15,8 +15,8 @@ The following large files are archived at [Zenodo record TBD]:
 
 | File(s) | Description | Size (approx.) |
 |---------|-------------|----------------|
-| `Merged/r1a.parquet`, `r1b.parquet`, `r2.parquet`, `r3.parquet` | 2017 ice pixel features: 64-dim AlphaEarth embeddings, EASD features (elevation, aspect, slope, edge distance), binary melt label, lat/lon coordinates | ~GB |
-| `Sim_Merged/r1a.parquet`, `r1b.parquet`, `r2.parquet`, `r3.parquet` | 2025 ice pixel features: 64-dim AlphaEarth embeddings and coordinates, used for future melt simulation | ~GB |
+| `Training_Data_2017/r1a.parquet`, `r1b.parquet`, `r2.parquet`, `r3.parquet` | 2017 ice pixel features: 64-dim AlphaEarth embeddings, EASD features (elevation, aspect, slope, edge distance), binary melt label, lat/lon coordinates | ~GB |
+| `Simulation_Data_2025/r1a.parquet`, `r1b.parquet`, `r2.parquet`, `r3.parquet` | 2025 ice pixel features: 64-dim AlphaEarth embeddings and coordinates, used for future melt simulation | ~GB |
 | `Predictions/predictions_full_peru_r3holdout.parquet` | Per-pixel predicted melt probabilities for all models (RF EASD, RF AE, MLP, CNN 3x3, CNN 5x5) | ~GB |
 | `Final_Models/mlp_final.pt` | Trained MLP weights (PyTorch state dict) | ~MB |
 | `Final_Models/rf_baseline.joblib` | Trained RF baseline (scikit-learn) | ~MB |

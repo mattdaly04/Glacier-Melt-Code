@@ -1,18 +1,28 @@
-# Python-generated files
+# Large data files — hosted on Zenodo, not tracked in git
+# See data/README.md for download instructions
+data/Training_Data_2017/
+data/Simulation_Data_2025/
+data/Final_Models/
+data/Predictions/
+data/Tensors/
+data/Results/
+data/Saved_Models/
+
+# Generated outputs (regenerate by running notebooks)
+results/*.png
+results/*.parquet
+results/*.joblib
+
+# Python
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.py[cod]
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
 
-# Virtual environments
-.venv
+# uv
+.python-version
 
-# Crap
-*.joblib
-*.parquet
-*.csv
-*.pt
-
-*.tif
+# OS
+.DS_Store
+Thumbs.db

@@ -41,6 +41,7 @@ VALIDATION_REGION = "r3"
 
 # AlphaEarth embedding columns are named A00–A63 in the parquet files
 EMBEDDING_COLS = [f"A{i:02d}" for i in range(64)]
+AE_COLS = EMBEDDING_COLS  # alias used by train.py, projection.py, notebooks
 EASD_COLS = ["elevation", "aspect", "slope", "edge_distance"]
 LABEL_COL = "melt_label"
 COORD_COLS = ["lon", "lat"]
